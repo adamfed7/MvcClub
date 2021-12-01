@@ -1,0 +1,91 @@
+﻿@model IEnumerable<MvcClub.Models.Player>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <form asp-controller="Players" asp-action="Index" method="get">
+        <p>
+            Search (for First_name or Surname or Position): <input type="text" name="SearchString" />
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Player_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matches)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Yellow_cards)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Red_cards)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Goal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assist)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Player_number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.First_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Matches)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Yellow_cards)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Red_cards)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Goal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Assist)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
